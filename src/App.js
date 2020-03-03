@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Produce from './Produce'
-import { Container, Form, FormGroup, Button, Label, Input } from 'reactstrap';
+import { Container, Form, FormGroup, Label, Input } from 'reactstrap';
 
 var searchList =  require('./example.json');
 console.log(searchList);
@@ -54,7 +54,6 @@ class App extends React.Component{
             continue;
           }
         } 
-    loop2:
           for(var j = 0; j < searchList.items[i].categories.length; j++){
             if((searchList.items[i].categories[j].name.toLowerCase()).includes(this.state.value)){
               returnArr.push(searchList.items[i]);
@@ -90,7 +89,7 @@ class App extends React.Component{
         <h1>Results:</h1>
 
         {(this.state.searchReturn || []).map((produce, index) => 
-          <Produce title={produce.title} img={produce.img} description={produce.description}/>
+          <Produce title={produce.title} img={produce.img} description={produce.description} key={produce.id}/>
         )}
       </Container>
       
